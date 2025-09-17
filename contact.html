@@ -167,9 +167,6 @@
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
   <script>
     window.onload = function() {
       fetch('navbar.html')
@@ -190,24 +187,59 @@
     }
   
     document.addEventListener('navbarLoaded', () => {
-      // Call whatever functions from main.js here that need DOM
-      if (typeof initSwiper === "function") initSwiper();
-      if (typeof aosInit === "function") aosInit();
-      if (typeof toggleScrolled === "function") toggleScrolled();
-      if (typeof toggleScrollTop === "function") toggleScrollTop();
-  
-      // Attach mobile nav toggle event again because it may have been missed
-      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-      if (mobileNavToggleBtn) {
-        mobileNavToggleBtn.addEventListener('click', () => {
-          document.querySelector('body').classList.toggle('mobile-nav-active');
-          mobileNavToggleBtn.classList.toggle('bi-list');
-          mobileNavToggleBtn.classList.toggle('bi-x');
-        });
+  // Initialize other functions
+  if (typeof initSwiper === "function") initSwiper();
+  if (typeof aosInit === "function") aosInit();
+  if (typeof toggleScrolled === "function") toggleScrolled();
+  if (typeof toggleScrollTop === "function") toggleScrollTop();
+
+  // Mobile nav toggle
+  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+  if (mobileNavToggleBtn) {
+    mobileNavToggleBtn.addEventListener('click', () => {
+      document.querySelector('body').classList.toggle('mobile-nav-active');
+      mobileNavToggleBtn.classList.toggle('bi-list');
+      mobileNavToggleBtn.classList.toggle('bi-x');
+    });
+  }
+
+  // ✅ Hide mobile nav on link click
+  document.querySelectorAll('#navmenu a').forEach(navmenu => {
+    navmenu.addEventListener('click', () => {
+      if (document.querySelector('.mobile-nav-active')) {
+        document.querySelector('body').classList.remove('mobile-nav-active');
+        const toggleBtn = document.querySelector('.mobile-nav-toggle');
+        if (toggleBtn) {
+          toggleBtn.classList.remove('bi-x');
+          toggleBtn.classList.add('bi-list');
+        }
       }
     });
+  });
+  console.log("main.js loaded!");
+
+// Mobile nav dropdown toggle – run immediately since script loaded at the end
+const toggles = document.querySelectorAll('i.toggle-dropdown');
+
+toggles.forEach(toggle => {
+  toggle.addEventListener('click', function(e) {
+    e.preventDefault();
+      const parentLi = this.closest('li.dropdown');
+    if (parentLi) {     
+      parentLi.classList.toggle('dropdown-active');
+      
+    } 
+  });
+});
+
+
+});
+
+
+    
   </script>
-  
+   <!-- Main JS File -->
+   <script src="assets/js/main.js"></script>
 
 </body>
 

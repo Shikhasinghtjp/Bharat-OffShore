@@ -173,12 +173,34 @@ h6 {
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
+
+
 /* Navmenu - Desktop */
 @media (min-width: 1200px) {
   .navmenu {
     padding: 0;
   }
+  .navmenu .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .navmenu .dropdown > a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navmenu .dropdown > i.toggle-dropdown {
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 10px;
+    transition: transform 0.3s;
+  }
 
+  .navmenu .dropdown.dropdown-active > i.toggle-dropdown {
+    transform: rotate(180deg);
+  }
   .navmenu ul {
     margin: 0;
     padding: 0;
@@ -222,7 +244,7 @@ h6 {
   .navmenu .active:focus {
     color: var(--nav-hover-color);
   }
-
+  
   .navmenu .dropdown ul {
     margin: 0;
     padding: 10px 0;
@@ -278,10 +300,37 @@ h6 {
     left: -100%;
     visibility: visible;
   }
+  .navmenu .dropdown > i:hover.toggle-dropdown {
+    transform: rotate(180deg);
+  }
 }
 
 /* Navmenu - Mobile */
 @media (max-width: 1199px) {
+  .navmenu .dropdown {
+    display: block; 
+    position: relative;
+  }
+
+  .navmenu .dropdown > a {
+    display: block;
+    padding: 10px 20px;
+    position: relative;
+  }
+
+  .navmenu .dropdown > i.toggle-dropdown {
+    position: absolute;
+    right: 20px;
+    top: 7%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .navmenu .dropdown.dropdown-active > i.toggle-dropdown {
+    transform: translateY(-50%) rotate(180deg);
+  }
   .mobile-nav-toggle {
     color: var(--nav-color);
     font-size: 28px;
@@ -360,11 +409,13 @@ h6 {
   }
 
   .navmenu .dropdown ul {
-    position: static;
+     position: static; 
     display: none;
     z-index: 99;
-    padding: 10px 0;
-    margin: 10px 20px;
+    padding: 10px 20px;
+    margin: 0; 
+    /* padding: 10px 0;*/
+     /* margin: 10px 20px;  */
     background-color: var(--nav-dropdown-background-color);
     border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
     box-shadow: none;
@@ -375,11 +426,11 @@ h6 {
     background-color: rgba(33, 37, 41, 0.1);
   }
 
-  .navmenu .dropdown>.dropdown-active {
+  .navmenu .dropdown.dropdown-active > ul {
     display: block;
     background-color: rgba(33, 37, 41, 0.03);
   }
-
+  
   .mobile-nav-active {
     overflow: hidden;
   }
@@ -402,7 +453,7 @@ h6 {
     transition: 0.3s;
   }
 
-  .mobile-nav-active .navmenu>ul {
+  .mobile-nav-active .navmenu > ul {
     display: block;
   }
 }
