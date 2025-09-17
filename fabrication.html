@@ -218,21 +218,43 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-    // Load Navbar and Footer dynamically
     window.onload = function() {
       fetch('navbar.html')
         .then(response => response.text())
         .then(data => {
           document.getElementById('navbar-container').innerHTML = data;
+          
+          // Initialize mobile nav after loading navbar
+          const event = new Event('navbarLoaded');
+          document.dispatchEvent(event);
         });
-      
+  
       fetch('footer.html')
         .then(response => response.text())
         .then(data => {
           document.getElementById('footer-container').innerHTML = data;
         });
     }
+  
+    document.addEventListener('navbarLoaded', () => {
+      // Call whatever functions from main.js here that need DOM
+      if (typeof initSwiper === "function") initSwiper();
+      if (typeof aosInit === "function") aosInit();
+      if (typeof toggleScrolled === "function") toggleScrolled();
+      if (typeof toggleScrollTop === "function") toggleScrollTop();
+  
+      // Attach mobile nav toggle event again because it may have been missed
+      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+      if (mobileNavToggleBtn) {
+        mobileNavToggleBtn.addEventListener('click', () => {
+          document.querySelector('body').classList.toggle('mobile-nav-active');
+          mobileNavToggleBtn.classList.toggle('bi-list');
+          mobileNavToggleBtn.classList.toggle('bi-x');
+        });
+      }
+    });
   </script>
+  
 
 </body>
 

@@ -1,6 +1,6 @@
 
 
-(function() {
+(function initNavbarFunctions() {
   "use strict";
 
   /**
@@ -120,8 +120,8 @@
   /**
    * Initiate glightbox
    */
-  // const glightbox = glightbox({
-  //   selector: '.glightbox'
-  // });
+  const glightbox = glightbox({
+    selector: '.glightbox'
+   });
 
 })();
