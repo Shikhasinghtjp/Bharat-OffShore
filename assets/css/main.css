@@ -1021,6 +1021,76 @@ section,
   position: relative;
 }
 
+#expertise .info-card {
+  border: 1px solid #eee;
+  border-left: 4px solid transparent;
+  border-radius: 10px;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+#expertise .info-card:hover {
+  transform: translateY(-6px);
+  border-left: 4px solid var(--accent-color);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+}
+
+/* Policy list */
+.policy-list li {
+  position: relative;
+  padding-left: 28px;
+  transition: color 0.3s ease;
+}
+.policy-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent-color);
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+.policy-list li:hover {
+  color: var(--accent-color);
+}
+.policy-list li:hover::before {
+  transform: scale(1.3) rotate(10deg);
+}
+/* Client logos */
+.client-logo {
+  background: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+}
+.client-logo:hover {
+  transform: scale(1.07);
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+}
+/* Outlook Card */
+.outlook-card {
+  border-radius: 12px;
+  transition: all 0.4s ease;
+  border-left: 4px solid transparent;
+}
+.outlook-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  border-left: 4px solid var(--accent-color);
+}
+.outlook-card i {
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+.outlook-card:hover i {
+  transform: rotate(10deg) scale(1.15);
+  color: var(--accent-color);
+}
 .about .about-content h2 {
   font-size: 2.5rem;
   font-weight: 700;
@@ -1238,7 +1308,8 @@ section,
   background-clip: padding-box;
   position: relative;
   overflow: hidden;
-  transition: all 0.4s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-left: 5px solid transparent;
 }
 
 #mission-vision .card::before {
@@ -1247,15 +1318,15 @@ section,
   inset: 0;
   border-radius: 15px;
   padding: 2px;
-  /* background: linear-gradient(135deg, #0d6efd, #20c997, #ffc107); */
   background-size: 300% 300%;
   z-index: -1;
   animation: gradientBorder 6s ease infinite;
 }
 
 #mission-vision .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  border-left: 5px solid var(--accent-color);
   
 }
 
