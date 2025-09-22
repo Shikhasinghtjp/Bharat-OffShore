@@ -23,6 +23,8 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -88,7 +90,7 @@
                 </div>
               </div>
 
-              <div class="certifications mt-5" data-aos="fade-up" data-aos-delay="700">
+              <!-- <div class="certifications mt-5" data-aos="fade-up" data-aos-delay="700">
                 <h5>Certifications &amp; Partnerships</h5>
                 <div class="row g-3 align-items-center">
                   <div class="col-4 col-md-3">
@@ -101,16 +103,14 @@
                     <img src="assets/img/construction/badge-5.webp" alt="Certification" class="img-fluid">
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
 
           <div class="col-lg-6">
             <div class="about-image position-relative" data-aos="fade-left" data-aos-delay="200">
-              <img src="assets/img/construction/about.jpg" alt="Construction Team" class="img-fluid main-image rounded">
-              <div class="image-overlay">
-                <img src="assets/img/construction/about2.jpg" alt="Construction Project" class="img-fluid rounded">
-              </div>
+              <img src="assets/img/construction/main_img_aboutus.jpeg" alt="Construction Team" class="img-fluid main-image rounded">
+             
               <div class="experience-badge" data-aos="zoom-in" data-aos-delay="500">
                 <span>3+</span>
                 <p>Years of Experience</p>
@@ -129,7 +129,7 @@
     <div class="row align-items-center g-5">
       <!-- Founder Image -->
       <div class="col-lg-5 text-center">
-        <img src="assets/img/construction/founder.jpg" alt="Founder" class="img-fluid rounded shadow">
+        <img src="assets/img/founder.jpg" alt="Founder" class="img-fluid rounded shadow">
       </div>
       <!-- Founder Info -->
       <div class="col-lg-7">
@@ -200,7 +200,7 @@
     <!-- /Mission & Vision Section -->
 
         <!-- ✅ Our Team & Expertise Section -->
-        <section id="expertise" class="py-5 light-background" data-aos="fade-up">
+        <section id="expertise" class="py-5 light-background head" data-aos="fade-up">
           <div class="container">
             <div class="section-header text-center mb-4">
               <h2>Our Team & Expertise</h2>
@@ -247,7 +247,7 @@
         </section>
     
         <!-- HSE & Quality Policy -->
-        <section id="hse-policy" class="section bg-light py-5">
+        <section id="hse-policy" class="section bg-light py-5 head">
           <div class="container" data-aos="fade-up">
             <h2 class="mb-4 text-center">HSE & Quality Policy</h2>
             <div class="row g-4">
@@ -271,7 +271,7 @@
         <!-- /HSE & Quality Policy -->
     
         <!-- Core Expertise Section -->
-<section id="core-expertise" class="py-5 light-background" data-aos="fade-up">
+<section id="core-expertise" class="py-5 light-background head" data-aos="fade-up">
   <div class="container">
     <div class="section-header text-center mb-4">
       <h2>Core Expertise & Our Strengths</h2>
@@ -309,9 +309,9 @@
 </section>
 
         <!-- Future Outlook -->
-        <section id="future-outlook" class="section py-5">
+        <section id="future-outlook" class="section py-5 header">
           <div class="container" data-aos="fade-up">
-            <h2 class="mb-4 text-center">Future Outlook</h2>
+            <h2 class="mb-4 text-center" >Future Outlook</h2>
             <p class="text-center mb-5">Shaping the future with innovation and trust, Bharat OffShore Services Pvt. Ltd is poised to expand its footprint in the global oil & gas sector.</p>
             <div class="row g-4">
               <div class="col-md-6 col-lg-3">
@@ -348,19 +348,87 @@
         <!-- /Future Outlook -->
     
         <!-- Clientele Section -->
-        <section id="clientele" class="section bg-light py-5">
-          <div class="container" data-aos="fade-up">
-            <h2 class="mb-4 text-center">Our Clientele</h2>
-            <p class="text-center mb-5">We are proud to have worked with leading organizations in the Oil & Gas industry, delivering successful offshore and onshore projects with excellence.</p>
-            <div class="row g-4 text-center">
-              <div class="col-6 col-md-3"><div class="client-logo shadow-sm p-3">ONGC</div></div>
-              <div class="col-6 col-md-3"><div class="client-logo shadow-sm p-3">L&T Hydrocarbon</div></div>
-              <div class="col-6 col-md-3"><div class="client-logo shadow-sm p-3">J. Ray Macdermott</div></div>
-              <div class="col-6 col-md-3"><div class="client-logo shadow-sm p-3">Sapura Fabrication</div></div>
-              <div class="col-6 col-md-3"><div class="client-logo shadow-sm p-3">Jubilant Enpro</div></div>
-              <div class="col-6 col-md-3"><div class="client-logo shadow-sm p-3">Afcons Infra</div></div>
-              <div class="col-6 col-md-3"><div class="client-logo shadow-sm p-3">POSH India Offshore</div></div>
-              <div class="col-6 col-md-3"><div class="client-logo shadow-sm p-3">OCS Services</div></div>
+        <section id="clients" class="client-slider head ">
+          <div class="container">
+            <h2 class="text-center mb-5">Our Esteemed Clients</h2>
+        
+            <!-- Swiper -->
+            <div class="swiper myClientSwiper">
+              <div class="swiper-wrapper">
+        
+                <!-- Each logo -->
+                <div class="swiper-slide">
+                  <div class="client-logo">
+                    <img src="assets/img/client/afcons.jpeg" alt="ONGC Logo">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="client-logo">
+                    <img src="assets/img/client/ajr.jpeg" alt="ONGC Logo">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="client-logo">
+                    <img src="assets/img/client/core.png" alt="ONGC Logo">
+                  </div>
+                </div> 
+
+                <div class="swiper-slide">
+                  <div class="client-logo">
+                    <img src="assets/img/client/das.png" alt="ONGC Logo">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="client-logo">
+                    <img src="assets/img/client/jubilant.png" alt="ONGC Logo">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="client-logo">
+                    <img src="assets/img/client/LT.png" alt="L&T Hydrocarbon Logo">
+                  </div>
+                </div>
+        
+                <div class="swiper-slide">
+                  <div class="client-logo">
+                    <img src="assets/img/client/McDERMOTT.png" alt="J. Ray Mcdermott Logo">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="client-logo">
+                    <img src="assets/img/client/OCS.jpeg" alt="ONGC Logo">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="client-logo">
+                    <img src="assets/img/client/ongc.png" alt="ONGC Logo">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="client-logo">
+                    <img src="assets/img/client/pcts.jpeg" alt="Sapura Fabrication Logo">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="client-logo">
+                    <img src="assets/img/client/posh.jpeg" alt="Sapura Fabrication Logo">
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="client-logo">
+                    <img src="assets/img/client/sapura.jpeg" alt="Sapura Fabrication Logo">
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="client-logo">
+                    <img src="assets/img/client/westfield.png" alt="Sapura Fabrication Logo">
+                  </div>
+                </div>
+          
+        
+              </div>
             </div>
           </div>
         </section>
@@ -383,6 +451,26 @@
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".myClientSwiper", {
+    slidesPerView: 5,       // desktop pe 5 logos ek sath
+    spaceBetween: 30,       // gap between logos
+    loop: true,             // infinite loop
+    autoplay: {
+      delay: 0,             // no delay
+      disableOnInteraction: false,
+    },
+    speed: 4000,            // smooth continuous scroll
+    breakpoints: {
+      320: { slidesPerView: 2, spaceBetween: 20 },   // mobile
+      640: { slidesPerView: 3, spaceBetween: 20 },   // tablet
+      1024: { slidesPerView: 5, spaceBetween: 30 }   // desktop
+    }
+  });
+</script>
+
   <script>
     window.onload = function() {
       fetch('navbar.html')

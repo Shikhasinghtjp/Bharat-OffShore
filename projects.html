@@ -16,6 +16,8 @@
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -49,7 +51,7 @@
     </div><!-- End Page Title -->
 
     <!-- Projects Section -->
-    <section id="projects-timeline" class="projects-section py-5">
+    <section id="projects-timeline" class="projects-section py-5 head">
       <div class="container">
         <div class="section-header text-center mb-5">
           <h2>Projects Executed for ONGC</h2>
@@ -210,7 +212,91 @@
     
       </div>
     </section>
+     <!--Client-->
+     <section id="clients" class="client-slider head">
+      <div class="container">
+        <h2 class="text-center mb-5">Our Esteemed Clients</h2>
     
+        <!-- Swiper -->
+        <div class="swiper myClientSwiper">
+          <div class="swiper-wrapper">
+    
+            <!-- Each logo -->
+            <div class="swiper-slide">
+              <div class="client-logo">
+                <img src="assets/img/client/afcons.jpeg" alt="ONGC Logo">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="client-logo">
+                <img src="assets/img/client/ajr.jpeg" alt="ONGC Logo">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="client-logo">
+                <img src="assets/img/client/core.png" alt="ONGC Logo">
+              </div>
+            </div> 
+
+            <div class="swiper-slide">
+              <div class="client-logo">
+                <img src="assets/img/client/das.png" alt="ONGC Logo">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="client-logo">
+                <img src="assets/img/client/jubilant.png" alt="ONGC Logo">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="client-logo">
+                <img src="assets/img/client/LT.png" alt="L&T Hydrocarbon Logo">
+              </div>
+            </div>
+    
+            <div class="swiper-slide">
+              <div class="client-logo">
+                <img src="assets/img/client/McDERMOTT.png" alt="J. Ray Mcdermott Logo">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="client-logo">
+                <img src="assets/img/client/OCS.jpeg" alt="ONGC Logo">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="client-logo">
+                <img src="assets/img/client/ongc.png" alt="ONGC Logo">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="client-logo">
+                <img src="assets/img/client/pcts.jpeg" alt="Sapura Fabrication Logo">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="client-logo">
+                <img src="assets/img/client/posh.jpeg" alt="Sapura Fabrication Logo">
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="client-logo">
+                <img src="assets/img/client/sapura.jpeg" alt="Sapura Fabrication Logo">
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="client-logo">
+                <img src="assets/img/client/westfield.png" alt="Sapura Fabrication Logo">
+              </div>
+            </div>
+      
+    
+          </div>
+        </div>
+      </div>
+    </section>
     
 
   </main>
@@ -228,6 +314,25 @@
  <script src="assets/vendor/aos/aos.js"></script>
  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".myClientSwiper", {
+    slidesPerView: 5,       // desktop pe 5 logos ek sath
+    spaceBetween: 30,       // gap between logos
+    loop: true,             // infinite loop
+    autoplay: {
+      delay: 0,             // no delay
+      disableOnInteraction: false,
+    },
+    speed: 4000,            // smooth continuous scroll
+    breakpoints: {
+      320: { slidesPerView: 2, spaceBetween: 20 },   // mobile
+      640: { slidesPerView: 3, spaceBetween: 20 },   // tablet
+      1024: { slidesPerView: 5, spaceBetween: 30 }   // desktop
+    }
+  });
+</script>
  <script>
   window.onload = function() {
     fetch('navbar.html')
