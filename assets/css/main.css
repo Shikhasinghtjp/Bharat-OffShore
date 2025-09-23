@@ -2338,11 +2338,11 @@ Projects Section
 }
 
 #achievements .swiper-slide img {
-  max-width: 150px;   /* image की max चौड़ाई */
-  max-height: 200px;  /* image की max ऊँचाई */
+  max-width: 150px;   
+  max-height: 200px;  
   width: auto;
   height: auto;
-  object-fit: contain; /* image को distort न करे */
+  object-fit: contain; 
   transition: transform 0.3s ease;
   filter: grayscale(20%);
 }
