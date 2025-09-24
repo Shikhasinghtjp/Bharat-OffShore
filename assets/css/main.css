@@ -481,7 +481,7 @@ h6 {
 }
 
 .footer .footer-about .logo img {
-  max-height: 40px;
+  max-height: 100px;
   margin-right: 6px;
 }
 
@@ -741,6 +741,15 @@ section,
   .section {
     scroll-margin-top: 66px;
   }
+}
+@media (max-width: 768px){
+  .header h2:after{
+    content: "";
+    position: absolute;
+    width: 0px;
+    height: 0px;
+   
+    }
 }
 
 /*--------------------------------------------------------------
@@ -1422,6 +1431,9 @@ section,
     right: 0;
     width: 40%;
   }
+  #founder h2:after{
+    width:0px;
+  }
 }
 /* Founder Section */
 #founder {
@@ -2027,7 +2039,16 @@ Projects Section
     justify-self: center !important;
     text-align: left !important;
     padding: 0 !important;
+    border: none !important;
   }
+  .head h2:after{
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 0px;
+ 
+  }
+  
 }
 
 
@@ -2351,6 +2372,26 @@ Projects Section
 #achievements .swiper-slide img:hover {
   transform: scale(1.05);
   filter: grayscale(0%);
+}
+.swiper .swiper-wrapper .icon-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.swiper .swiper-wrapper .icon-slide i {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #007bff; 
+}
+
+.swiper .swiper-wrapper .icon-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
 }
 
 
@@ -3030,6 +3071,15 @@ Projects Section
   .call-to-action .cta-hero-content h2 {
     font-size: 2.2rem;
   }
+ 
+    .call-to-action .cta-hero-content h2:after{
+      content: "";
+      position: absolute;
+      width: 0px;
+      height: 0px;
+     
+      }
+  
 }
 
 .call-to-action .cta-hero-content p {
