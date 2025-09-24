@@ -11,6 +11,8 @@
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -27,6 +29,18 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    .industry-icon {
+      font-size: 50px;
+      color: #2e5aac; /* blue shade */
+      margin-bottom: 15px;
+    }
+    .industry-box {
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+  <body>
     <div id="navbar-container" class="header sticky-top"></div>
     <main class="main">
 
@@ -66,62 +80,93 @@
     </div>
   </div>
 </section>
-
-<!-- Achievements & Certifications Slider -->
-<section id="achievements" class="py-5 bg-light">
+      <section class="py-5">
   <div class="container">
+    <div class="row mb-4 text-center">
+      <div class="col">
+        <h5 class="fw-bold">
+          We have developed its training potential and geared <br>
+          up to meet the training &amp; workshop training needs of the various industries
+        </h5>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <div class="col-6 col-md-2 offset-md-1 industry-box">
+        <i class="fa-solid fa-industry industry-icon"></i>
+        <p>Oil & Gas</p>
+      </div>
+      <div class="col-6 col-md-2 industry-box">
+        <i class="fa-solid fa-bolt-lightning industry-icon"></i>
+        <p>Renewable energy</p>
+      </div>
+      <div class="col-6 col-md-2 industry-box">
+        <i class="fa-solid fa-hard-hat industry-icon"></i>
+        <p>Construction</p>
+      </div>
+      <div class="col-6 col-md-2 industry-box">
+        <i class="fa-solid fa-gears industry-icon"></i>
+        <p>Metal Industry</p>
+      </div>
+      <div class="col-6 col-md-2 industry-box">
+        <i class="fa-solid fa-flask industry-icon"></i>
+        <p>Refinery</p>
+      </div>
+    </div>
+  </div>
+      </section>
+
+   <!-- Achievements & Certifications Slider -->
+    <section id="achievements" class="py-5" style="background-color: #e5e6e7;">
+    <div class="container">
     <div class="section-header text-center mb-5 head">
-      <h2>Achievements & Certifications</h2>
+      <h2>Training & Certifications</h2>
       <p class="text-muted">Our excellence is reflected through recognized certifications and achievements.</p>
     </div>
 
-   
-    <!-- Swiper -->
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper align-items-center">
-        
-        <!-- Slide 1 -->
-        <div class="swiper-slide">
-          <a href="assets/img/certificates/c1.png" class="glightbox" data-gallery="cert-gallery">
-            <img src="assets/img/certificates/c1.png" class="img-fluid rounded shadow-sm" alt="Certification 1">
-          </a>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="swiper-slide">
-          <a href="assets/img/certificates/c2.png" class="glightbox" data-gallery="cert-gallery">
-            <img src="assets/img/certificates/c2.png" class="img-fluid rounded shadow-sm" alt="Certification 2">
-          </a>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="swiper-slide">
-          <a href="assets/img/certificates/w1.jpg" class="glightbox" data-gallery="cert-gallery">
-            <img src="assets/img/certificates/w1.jpg" class="img-fluid rounded shadow-sm" alt="Certification 3">
-          </a>
-        </div>
-
-       <!-- Slide 4 -->
-       <div class="swiper-slide">
-        <a href="assets/img/certificates/w2.jpg" class="glightbox" data-gallery="cert-gallery">
-          <img src="assets/img/certificates/w2.jpg" class="img-fluid rounded shadow-sm" alt="Certification 3">
-        </a>
+   <!-- Swiper Container -->
+       <div class="swiper mySwiper" data-aos="fade-up">
+    <div class="swiper-wrapper">
+  
+      <!-- Slide 1: Project Engineering -->
+      <div class="swiper-slide icon-slide">
+        <i class="fas fa-drafting-compass"></i>
+        <span class="icon-label">Project Engineering</span>
       </div>
   
-      <div class="swiper-slide">
-        <a href="assets/img/certificates/w3_page-0001.jpg" class="glightbox" data-gallery="cert-gallery">
-          <img src="assets/img/certificates/w3_page-0001.jpg" class="img-fluid rounded shadow-sm" alt="Certification 3">
-        </a>
+      <!-- Slide 2: Supply and Chain Management -->
+      <div class="swiper-slide icon-slide">
+        <i class="fas fa-truck-loading"></i>
+        <span class="icon-label">Supply and Chain Management</span>
       </div>
-      <div class="swiper-slide">
-        <a href="assets/img/certificates/w3_page-0008.jpg" class="glightbox" data-gallery="cert-gallery">
-          <img src="assets/img/certificates/w3_page-0008.jpg" class="img-fluid rounded shadow-sm" alt="Certification 3">
-        </a>
+  
+      <!-- Slide 3: Health Safety and Environment (HSE) -->
+      <div class="swiper-slide icon-slide">
+        <i class="fas fa-hard-hat"></i>
+        <span class="icon-label">Health Safety and Environment (HSE)</span>
       </div>
-
+  
+      <!-- Slide 4: Fabrication and Blasting, Painting, Coating -->
+      <div class="swiper-slide icon-slide">
+        <i class="fas fa-paint-roller"></i>
+        <span class="icon-label">Fabrication and Blasting, Painting, Coating</span>
+      </div>
+  
+      <!-- Slide 5: Workshop - Fabrication, Painting, Coating -->
+      <div class="swiper-slide icon-slide">
+        <i class="fas fa-industry"></i>
+        <span class="icon-label">Workshop - Fabrication, Painting & Coating</span>
+      </div>
+  
+     
+  
     </div>
-
-   <!-- Benefits -->
+       </div>
+     </div>
+   </section>
+     <!-- Benefits -->
+    <section id="achievements" class="py-5 bg-light">
+    
    <div class="training-benefits text-center pt-5">
     <h4 class="mb-3">Why Our Training Matters</h4>
     <p class="mb-4">Our certifications are proof of our expertise and commitment to international standards.</p>
@@ -152,8 +197,7 @@
       </div>
     </div>
    </div>
-   </section>
-         
+    </section>     
 
     </main><!-- End #main -->
     <div id="footer-container"></div>
