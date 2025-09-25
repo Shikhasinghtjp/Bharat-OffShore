@@ -464,7 +464,7 @@ h6 {
 --------------------------------------------------------------*/
 .footer {
   color: var(--default-color);
-  background-color: var(--background-color);
+  background-color: #585858;
   font-size: 14px;
   padding-bottom: 50px;
   position: relative;
@@ -703,38 +703,7 @@ section,
   scroll-margin-top: 90px;
   overflow: clip;
 }
-.head h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  position: relative;
-}
 
- .head h2:after {
-  content: "";
-  position: absolute;
-  left:28rem;
-  bottom: -0.5rem;
-  width: 80px;
-  height: 4px;
-  background-color: var(--accent-color);
-}
-.header h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
- .header h2:after {
-  content: "";
-  position: absolute;
-  left:31rem;
-  bottom: -0.5rem;
-  width: 80px;
-  height: 4px;
-  background-color: var(--accent-color);
-}
 @media (max-width: 1199px) {
 
   section,
@@ -742,15 +711,7 @@ section,
     scroll-margin-top: 66px;
   }
 }
-@media (max-width: 768px){
-  .header h2:after{
-    content: "";
-    position: absolute;
-    width: 0px;
-    height: 0px;
-   
-    }
-}
+
 
 /*--------------------------------------------------------------
 # Global Section Titles
@@ -870,26 +831,26 @@ section,
   margin-bottom: 30px;
 }
 
-.hero .hero-content .subtitle {
+ .subtitle {
   display: inline-block;
   font-weight: 600;
   font-size: 14px;
   text-transform: uppercase;
-  color: var(--accent-color);
+  color:white;
   margin-bottom: 15px;
   letter-spacing: 1px;
   position: relative;
   padding-left: 25px;
 }
 
-.hero .hero-content .subtitle::before {
+ .subtitle::before {
   content: "";
   position: absolute;
   left: 0;
   top: 50%;
   width: 15px;
   height: 2px;
-  background-color: var(--accent-color);
+  background-color: white;
   transform: translateY(-50%);
 }
 
@@ -1250,15 +1211,6 @@ section,
   position: relative;
 }
 
- h2:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.5rem;
-  width: 80px;
-  height: 4px;
-  background-color: var(--accent-color);
-}
 
 .about .about-content .lead {
   font-size: 1.15rem;
@@ -2041,13 +1993,7 @@ Projects Section
     padding: 0 !important;
     border: none !important;
   }
-  .head h2:after{
-  content: "";
-  position: absolute;
-  width: 0px;
-  height: 0px;
- 
-  }
+  
   
 }
 

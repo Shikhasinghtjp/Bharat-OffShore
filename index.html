@@ -14,112 +14,284 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
       rel="stylesheet"
     />
-      <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <!-- Vendor CSS Files -->
-    <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-    <link
-      href="assets/vendor/glightbox/css/glightbox.min.css"
-      rel="stylesheet"
-    />
 
-    <!-- Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet" />
+    <!-- Bootstrap & Icons (kept as external) -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Swiper CSS (kept for client slider) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <!-- Internal CSS (Bootstrap used mostly; custom styles kept here) -->
+    <style>
+      :root{
+        --brand-blue: #2A7BBF;
+        --brand-dark: #001830;
+        --accent: #F9C74F;
+      }
+    
+      html,body { font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    
+      /* ---------- HERO / CAROUSEL ---------- */
+      #heroCarousel {
+        position: relative;
+        overflow: hidden;
+        max-height: 80vh;
+        height: 80vh;
+        background: #000;
+      }
+      #heroCarousel .carousel-item { height: 100%; }
+      #heroCarousel .carousel-item img { width:100%; height:100%; object-fit:cover; display:block; }
+    
+      /* overlay: diagonal on large screens, full on small screens */
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background: linear-gradient(90deg, rgba(0,25,50,0.75) 0%, rgba(0,25,50,0.58) 30%, rgba(0,25,50,0.18) 60%, rgba(0,25,50,0) 100%);
+        clip-path: polygon(100% 0, 0 100%, 0 0);
+      }
+    
+      /* hero text block (centered on smaller viewports) */
+      .hero-text {
+        position: absolute;
+        top: 50%;
+        left: 6%;
+        transform: translateY(-50%);
+        z-index: 4;
+        color: #fff;
+        max-width: 620px;
+        padding: 18px 22px;
+        display: block;
+        /* ensure text wraps nicely */
+        word-break: break-word;
+        box-sizing: border-box;
+      }
+      .hero-text .display-4 {
+        font-size: 2.8rem;
+        line-height: 1.05;
+        font-weight: 800;
+        margin-bottom: 6px;
+        color: #fff;
+      }
+      .hero-text .subtitle { color:#f1f1f1; font-weight:600; margin-bottom:8px; display:block; }
+      .hero-text .lead { color: rgba(255,255,255,0.9); font-size:1.05rem; margin-bottom:14px; }
+    
+      .btn-primary {
+        background: var(--brand-blue) !important;
+        border-color: var(--brand-blue) !important;
+        color: #fff !important;
+        font-weight:700;
+        padding: 10px 22px;
+        border-radius: 8px;
+      }
+      .btn-primary:hover, .btn-primary:focus { background:#225f96 !important; border-color:#225f96 !important; }
+    
+      /* badges - bottom-left on large screens */
+      .badges {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        display: flex;
+        gap: 10px;
+        z-index: 5;
+        flex-wrap: wrap;
+        align-items: center;
+        max-width: calc(100% - 40px);
+      }
+      .badge-custom {
+        background: var(--accent);
+        color: var(--brand-dark);
+        padding: 6px 14px;
+        font-size: 0.85rem;
+        border-radius: 30px;
+        font-weight:700;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        white-space: nowrap;
+      }
+    
+      /* ---------- SERVICES / CARDS ---------- */
+      .services-home { padding: 80px 0; background:#f9f9f9; }
+      .section-header h2 { font-size: 2.2rem; margin-bottom:10px; color:var(--brand-dark); font-weight:800; }
+      .section-header .subtitle { color:#666; font-size:1.05rem; }
+    
+      .service-box {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        transition: transform .3s ease, box-shadow .3s ease;
+        height: 100%;
+        border: none;
+      }
+      .service-box:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.12); }
+      .service-img img { width:100%; height:230px; object-fit:cover; transition: transform .45s ease; display:block; }
+      .service-box:hover .service-img img { transform: scale(1.06); }
+      .service-info { padding:20px; text-align:center; }
+      .service-info h3 { font-size:1.25rem; color:var(--brand-dark); font-weight:700; margin-bottom:10px; }
+      .service-info p { color:#555; font-size:.95rem; min-height:68px; }
+      .btn-service { color:var(--brand-dark); text-decoration:none; font-weight:700; border-bottom:2px solid var(--accent); padding-bottom:2px; }
+      .btn-service:hover { color:var(--accent); }
+    
+      /* Testimonials adjustments */
+      .testimonial-slide { background: #fff; padding:24px; border-radius:12px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+      .testimonial-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+      .stars-rating i { color: #f6c948; margin-right:3px; }
+      .testimonial-body p { color:#333; font-size:1rem; min-height:72px; }
+      .author-info { display:flex; gap:12px; align-items:center; margin-top:14px; }
+      .author-avatar { width:56px; height:56px; object-fit:cover; border-radius:50%; }
+    
+      .client-logo img { max-width: 140px; width:100%; height:auto; display:block; margin:0 auto; }
+    
+      /* ---------- RESPONSIVE BEHAVIOR (improved for <=375px) ---------- */
+    
+      @media (max-width: 991px) {
+        .hero-text .display-4 { font-size:2.2rem; }
+        #heroCarousel { max-height:70vh; height:70vh; }
+      }
+    
+      @media (max-width: 767px) {
+        .hero-overlay { clip-path:none; background: rgba(0,25,50,0.7); }
+        .hero-text { left:50%; transform:translate(-50%,-50%); text-align:center; max-width:92%; padding:14px; }
+        .badges { bottom:14px; left:50%; transform:translateX(-50%); }
+        #heroCarousel { max-height:66vh; height:66vh; }
+        .hero-text .display-4 { font-size:1.9rem; }
+      }
+    
+      /* Key fix: specifically tune for very small screens (<=375px) */
+      @media (max-width: 375px) {
+        #heroCarousel { max-height:60vh; height:60vh; }
+    
+        /* Center hero text, limit width so it doesn't overflow */
+        .hero-text {
+          left:50%;
+          top:50%;
+          transform: translate(-50%,-50%);
+          text-align:center;
+          padding: 10px 12px;
+          max-width: 92%;
+          width: calc(100% - 28px); /* leave breathing room for padding + badges */
+          -webkit-font-smoothing: antialiased;
+        }
+    
+        .hero-text .display-4 {
+          font-size: 1.45rem;
+          line-height:1.08;
+          word-break: break-word;
+        }
+    
+        .hero-text .subtitle { font-size:0.95rem; display:block; }
+        .hero-text .lead { font-size:0.9rem; }
+    
+        /* badges: centered, wrapped and limited */
+        .badges {
+          bottom: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+          gap: 8px;
+          padding: 0 6px;
+          justify-content: center;
+          max-width: 92%;
+        }
+        .badge-custom {
+          font-size: 0.72rem;
+          padding: 5px 9px;
+          white-space: nowrap;
+          max-width: 48%; /* prevents a single badge from overflowing — both badges fit side-by-side or wrap */
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+    
+        /* Slightly reduce CTA size */
+        .btn-primary { padding: 8px 14px; font-size:0.95rem; }
+      }
+    
+      /* Very small phones and very short viewports */
+      @media (max-width: 320px), (max-height: 520px) {
+        #heroCarousel { max-height:55vh; height:55vh; }
+        .hero-text .display-4 { font-size:1.35rem; }
+        .hero-text .lead { font-size:0.85rem; }
+        .badge-custom { font-size:0.68rem; padding:4px 8px; }
+      }
+     
+ 
+
+    </style>
+    
   </head>
 
   <body class="index-page">
     <div id="navbar-container" class="header sticky-top"></div>
+
     <main class="main">
       <!-- Hero Section -->
-      <section id="hero" class="hero section">
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="row align-items-center">
-            <div class="col-lg-6">
-              <div
-                class="hero-content"
-                data-aos="fade-right"
-                data-aos-delay="200"
-              >
-                <h1 >Bharat OffShore Services Pvt. Ltd</h1>
-                <h1 class="subtitle">Reliable Offshore & Onshore Solutions</h1>
-                <p>
-                  We are a trusted partner in fabrication, project management,
-                  manpower solutions, and training services. With a strong
-                  foundation in quality and safety, we deliver excellence across
-                  industries worldwide.
-                </p>
-
-                <div class="hero-buttons">
-                  <a href="about.html" class="btn-primary">About Our Company</a>
-                  <a href="services.html" class="btn-secondary">Our Services</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
-              <div class="hero-image">
-                <img
-                  src="assets/img/construction/h1.jpg"
-                  alt="Construction Project"
-                  class="img-fluid"
-                />
-                <div class="image-badge">
-                  <span>ISO 9001:2015</span>
-                  <p>Certified Construction</p>
-                </div>
-              </div>
-            </div>
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="assets/img/construction/h1.jpg" alt="Image 1" class="d-block w-100" />
+          </div>
+          <div class="carousel-item">
+            <img src="assets/img/construction/h2.jpg" alt="Image 2" class="d-block w-100" />
+          </div>
+          <div class="carousel-item">
+            <img src="https://www.quanta-epc.co.uk/wp-content/uploads/2019/01/13.Construction.jpg" alt="Image 3" class="d-block w-100" />
           </div>
         </div>
-      </section>
+
+        <!-- Overlay -->
+        <div class="hero-overlay" aria-hidden="true"></div>
+
+        <!-- Text on Top (kept content same) -->
+        <div class="hero-text">
+          <h1 class="display-4">
+            Bharat OffShore <br />Services Pvt Ltd.
+          </h1>
+          <span class="subtitle fw-bold">Committed to superior quality and results</span>
+          <p class="lead">
+            Specializing in Fabrication, Project Management & Advanced NDT Testing
+          </p>
+          <a href="#services" class="btn btn-primary btn-lg">Explore Our Services</a>
+        </div>
+
+        <!-- Badges -->
+        <div class="badges" aria-hidden="true">
+          <span class="badge-custom">ISO 9001:2015</span>
+          <span class="badge-custom">QAAICB</span>
+        </div>
+
+        <!-- Optional carousel controls (hidden by default) -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Previous">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
 
       <!-- About Section -->
-      <section id="about" class="about section">
+      <section id="about" class="about section py-5">
         <div class="container" data-aos="fade-up" data-aos-delay="100">
           <div class="row align-items-center g-5">
             <div class="col-lg-6">
-              <div
-                class="about-image position-relative"
-                data-aos="fade-left"
-                data-aos-delay="200"
-              >
-                <img
-                  src="assets/img/construction/about.jpg"
-                  alt="Construction Team"
-                  class="img-fluid main-image rounded"
-                />
-                <div class="image-overlay">
-                  <img
-                    src="https://images.pexels.com/photos/11139595/pexels-photo-11139595.jpeg"
-                    alt="Construction Project"
-                    class="img-fluid rounded"
-                  />
+              <div class="about-image position-relative" data-aos="fade-left" data-aos-delay="200">
+                <img src="assets/img/construction/about.jpg" alt="Construction Team" class="img-fluid main-image rounded" />
+                <div class="image-overlay mt-3">
+                  <img src="https://images.pexels.com/photos/11139595/pexels-photo-11139595.jpeg" alt="Construction Project" class="img-fluid rounded mt-2" />
                 </div>
-                <div
-                  class="experience-badge"
-                  data-aos="zoom-in"
-                  data-aos-delay="500"
-                >
-                  <span>3+</span>
-                  <p>Years of Experience</p>
+                <div class="experience-badge position-absolute top-0 start-0 p-3" style="transform:translate(18px,18px);">
+                  <span class="fs-3 fw-bold">3+</span>
+                  <p class="mb-0 small">Years of Experience</p>
                 </div>
               </div>
             </div>
+
             <div class="col-lg-6">
-              <div
-                class="about-content"
-                data-aos="fade-right"
-                data-aos-delay="200"
-              >
+              <div class="about-content" data-aos="fade-right" data-aos-delay="200">
                 <h2>Who We Are</h2>
                 <p class="lead">
                   Bharat OffShore Services Pvt. Ltd is a trusted partner in
@@ -130,77 +302,28 @@
                 </p>
 
                 <div class="achievement-boxes row g-4 mt-4">
-                  <div
-                    class="col-6 col-md-3"
-                    data-aos="fade-up"
-                    data-aos-delay="300"
-                  >
-                    <div class="achievement-box">
-                      <h3>3+</h3>
-                      <p>Years Experience</p>
+                  <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="p-3 text-center rounded" style="background:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.04);">
+                      <h3 class="mb-0">3+</h3>
+                      <p class="small mb-0">Years Experience</p>
                     </div>
                   </div>
-                  <div
-                    class="col-6 col-md-3"
-                    data-aos="fade-up"
-                    data-aos-delay="400"
-                  >
-                    <div class="achievement-box">
-                      <h3>10+</h3>
-                      <p>Projects Completed</p>
+                  <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="p-3 text-center rounded" style="background:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.04);">
+                      <h3 class="mb-0">10+</h3>
+                      <p class="small mb-0">Projects Completed</p>
                     </div>
                   </div>
-                  <div
-                    class="col-6 col-md-3"
-                    data-aos="fade-up"
-                    data-aos-delay="500"
-                  >
-                    <div class="achievement-box">
-                      <h3>100%</h3>
-                      <p>Client Satisfaction</p>
+                  <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="500">
+                    <div class="p-3 text-center rounded" style="background:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.04);">
+                      <h3 class="mb-0">100%</h3>
+                      <p class="small mb-0">Client Satisfaction</p>
                     </div>
                   </div>
                 </div>
 
-                <!-- <div
-                  class="certifications mt-5"
-                  data-aos="fade-up"
-                  data-aos-delay="700"
-                >
-                  <h5>Certifications &amp; Partnerships</h5>
-                  <div class="row g-3 align-items-center">
-                    <div class="col-4 col-md-3">
-                      <img
-                        src="assets/img/construction/badge-4.webp"
-                        alt="Certification"
-                        class="img-fluid"
-                      />
-                    </div>
-                    <div class="col-4 col-md-3">
-                      <img
-                        src="assets/img/construction/badge-3.webp"
-                        alt="Certification"
-                        class="img-fluid"
-                      />
-                    </div>
-                    <div class="col-4 col-md-3">
-                      <img
-                        src="assets/img/construction/badge-5.webp"
-                        alt="Certification"
-                        class="img-fluid"
-                      />
-                    </div>
-                  </div>
-                </div> -->
-
-                <div
-                  class="cta-container mt-5"
-                  data-aos="fade-up"
-                  data-aos-delay="800"
-                >
-                  <a href="about.html" class="btn btn-primary"
-                    >Learn More About Us</a
-                  >
+                <div class="cta-container mt-5" data-aos="fade-up" data-aos-delay="800">
+                  <a href="about.html" class="btn btn-primary">Learn More About Us</a>
                 </div>
               </div>
             </div>
@@ -209,414 +332,97 @@
       </section>
 
       <!-- Services Section -->
-      <section id="services" class="services section">
-        <!-- Section Title -->
-        <div class="container section-title">
-          <h2>Services</h2>
-          <p>
-            "Engineering solutions that build the future with precision and
-            innovation."
-          </p>
-        </div>
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="service-grid row gy-4">
-            <div
-              class="col-lg-4 service-item"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div class="service-card">
-                <div class="service-number">01</div>
-                <div class="service-icon">
-                  <i class="bi bi-building"></i>
-                </div>
-                <h3>Oil and Gas Topside and Subsea Fabrications</h3>
-                <p>
-                  Bharat OffShore Services Pvt. Ltd delivers high-quality
-                  fabrication built on our core strength of development of
-                  precise shop drawings and supported by committed set of
-                  engineers, fabricators, fitters, welders, blasters, painters
-                  and QC personnel.
-                </p>
-                <a href="fabrication.html" class="service-link"
-                  >Explore More <i class="bi bi-arrow-right"></i
-                ></a>
-              </div>
-            </div>
-            <!-- End Service Item -->
-
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-              <div class="service-card featured">
-                <div class="service-number">02</div>
-                <div class="service-icon">
-                  <i class="bi bi-house"></i>
-                </div>
-                <h3>Equipment's / Manpower Resources</h3>
-                <p>
-                  Bharat OffShore Services Pvt. Ltd is happy to bridge the gap
-                  between companies, businesses and job seekers.
-                </p>
-                <a href="inspection.html" class="service-link"
-                  >Explore More <i class="bi bi-arrow-right"></i
-                ></a>
-              </div>
-            </div>
-            <!-- End Service Item -->
-
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
-              <div class="service-card">
-                <div class="service-number">03</div>
-                <div class="service-icon">
-                  <i class="bi bi-gear"></i>
-                </div>
-                <h3>Project Management Consultancy</h3>
-                <p>
-                  Project management consultancy services are vital for high
-                  impact, time sensitive projects—those most critical to your
-                  organisations success.
-                </p>
-                <a href="consultancy.html" class="service-link"
-                  >Explore More <i class="bi bi-arrow-right"></i
-                ></a>
-              </div>
-            </div>
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
-              <div class="service-card">
-                <div class="service-number">04</div>
-                <div class="service-icon">
-                  <i class="bi bi-gear"></i>
-                </div>
-                <h3>Training and Certifications</h3>
-                <p>
-                  Bharat OffShore Services Pvt. Ltd has developed its
-                  training potential and geared up to meet the training &
-                  workshop training needs of the various industries: – Oil
-                  & Gas, Renewable energy, Construction, Marine &
-                  Shipping, and Processes
-                </p>
-                <a href="certifications.html" class="service-link"
-                  >Explore More <i class="bi bi-arrow-right"></i
-                ></a>
-              </div>
-            </div>
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
-              <div class="service-card">
-                <div class="service-number">05</div>
-                <div class="service-icon">
-                  <i class="bi bi-gear"></i>
-                </div>
-                <h3>Advance NDT Testing</h3>
-                <p>
-                  Bharat OffShore Services Pvt. Ltd provides cutting-edge non-destructive testing for safety, compliance, and reliability.
-                </p>
-                <a href="consultancy.html" class="service-link"
-                  >Explore More <i class="bi bi-arrow-right"></i
-                ></a>
-              </div>
-            </div>
-            <!-- End Service Item -->
-          </div>
-
-          <div
-            class="cta-container text-center mt-5"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            <h3>Ready to Start Your Construction Project?</h3>
-            <p>“It’s one small step for man, one giant leap for mankind.”</p>
-            <a href="contact.html" class="btn btn-cta">Request a Free Quote</a>
-          </div>
-        </div>
-      </section>
-      <!-- Projects Section -->
-      <section id="projects-timeline" class="projects-section py-5 head">
-        <div class="container">
+      <section id="services" class="services-home section">
+        <div class="container" data-aos="fade-up">
           <div class="section-header text-center mb-5">
-            <h2>Projects Executed for ONGC</h2>
-            <p>Committed to superior Quality and Results</p>
+            <h2 class="fw-bold">What We Do</h2>
+            <p class="subtitle">Delivering Excellence in Every Service</p>
           </div>
 
-          <!-- Timeline for Desktop -->
-          <div class="timeline d-none d-lg-grid">
-            <div class="timeline-item" data-aos="fade-right">
-              <div class="timeline-content">
-                <h5>Development of Cluster8 Marginal Field</h5>
-                <p>
-                  Onshore & offshore fabrication and installation campaign of
-                  reinstatement subsea and pipeline spools.
-                </p>
+          <div class="row g-4">
+            <!-- Service Item 1 -->
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+              <div class="card service-box h-100">
+                <div class="service-img">
+                  <img src="assets/img/construction/frabrication_img.jpg" alt="Oil and Gas" class="card-img-top" />
+                </div>
+                <div class="card-body service-info">
+                  <h3 class="card-title">Oil & Gas Fabrications</h3>
+                  <p class="card-text">
+                    High-quality topside & subsea fabrications built with
+                    precision and safety.
+                  </p>
+                  <a href="fabrication.html" class="btn-service">Learn More</a>
+                </div>
               </div>
             </div>
 
-            <div class="timeline-item" data-aos="fade-left">
-              <div class="timeline-content">
-                <h5>Riser Clamp Installation (PRP-VII)</h5>
-                <p>
-                  Offshore removal of existing riser clamps and installation of
-                  new riser clamps with welding & fabrication campaign.
-                </p>
+            <!-- Service Item 2 -->
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+              <div class="card service-box h-100">
+                <div class="service-img">
+                  <img src="assets/img/construction/manpower.png" alt="Equipment / Manpower" class="card-img-top" />
+                </div>
+                <div class="card-body service-info">
+                  <h3 class="card-title">Equipment & Manpower</h3>
+                  <p class="card-text">
+                    Providing reliable manpower and resources tailored to your
+                    needs.
+                  </p>
+                  <a href="resources.html" class="btn-service">Learn More</a>
+                </div>
               </div>
             </div>
 
-            <div class="timeline-item" data-aos="fade-right">
-              <div class="timeline-content">
-                <h5>Pipeline Replacement PRP-VII</h5>
-                <p>
-                  Pipeline replacement & RTR welding procedure qualification for
-                  riser & subsea spools.
-                </p>
-              </div>
-            </div>
-
-            <div class="timeline-item" data-aos="fade-left">
-              <div class="timeline-content">
-                <h5>Barge Bumper & Boat Landing Replacement (BBLRP-IV)</h5>
-                <p>
-                  Onshore and offshore fabrication & installation campaign for
-                  bumpers and boat-landings.
-                </p>
-              </div>
-            </div>
-            <div class="timeline-item" data-aos="fade-right">
-              <div class="timeline-content">
-                <h5>Development of Cluster8 Marginal Field</h5>
-                <p>
-                  Onshore & offshore fabrication and installation campaign of
-                  reinstatement subsea and pipeline spools.
-                </p>
-              </div>
-            </div>
-
-            <div class="timeline-item" data-aos="fade-left">
-              <div class="timeline-content">
-                <h5>Riser Clamp Installation (PRP-VII)</h5>
-                <p>
-                  Offshore removal of existing riser clamps and installation of
-                  new riser clamps with welding & fabrication campaign.
-                </p>
-              </div>
-            </div>
-
-            <div class="timeline-item" data-aos="fade-right">
-              <div class="timeline-content">
-                <h5>Pipeline Replacement PRP-VII</h5>
-                <p>
-                  Pipeline replacement & RTR welding procedure qualification for
-                  riser & subsea spools.
-                </p>
+            <!-- Service Item 3 -->
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+              <div class="card service-box h-100">
+                <div class="service-img">
+                  <img src="assets/img/construction/pmc1.jpg" alt="Project Management" class="card-img-top" />
+                </div>
+                <div class="card-body service-info">
+                  <h3 class="card-title">Project Management Consultancy</h3>
+                  <p class="card-text">
+                    Expert consultancy for complex, time-sensitive, and critical
+                    projects.
+                  </p>
+                  <a href="consultancy.html" class="btn-service">Learn More</a>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Accordion for Mobile -->
-          <div class="accordion d-lg-none" id="projectsAccordion">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="heading1">
-                <button
-                  class="accordion-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapse1"
-                >
-                  Development of Cluster8 Marginal Field
-                </button>
-              </h2>
-              <div
-                id="collapse1"
-                class="accordion-collapse collapse show"
-                data-bs-parent="#projectsAccordion"
-              >
-                <div class="accordion-body">
-                  Onshore & offshore fabrication and installation campaign of
-                  reinstatement subsea and pipeline spools.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="heading2">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapse2"
-                >
-                  Riser Clamp Installation (PRP-VII)
-                </button>
-              </h2>
-              <div
-                id="collapse2"
-                class="accordion-collapse collapse"
-                data-bs-parent="#projectsAccordion"
-              >
-                <div class="accordion-body">
-                  Offshore removal of existing riser clamps and installation of
-                  new riser clamps with welding & fabrication campaign.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="heading3">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapse3"
-                >
-                  Pipeline Replacement PRP-VII
-                </button>
-              </h2>
-              <div
-                id="collapse3"
-                class="accordion-collapse collapse"
-                data-bs-parent="#projectsAccordion"
-              >
-                <div class="accordion-body">
-                  Pipeline replacement & RTR welding procedure qualification for
-                  riser & subsea spools.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="heading4">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapse4"
-                >
-                  Barge Bumper & Boat Landing Replacement (BBLRP-IV)
-                </button>
-              </h2>
-              <div
-                id="collapse4"
-                class="accordion-collapse collapse"
-                data-bs-parent="#projectsAccordion"
-              >
-                <div class="accordion-body">
-                  Onshore and offshore fabrication & installation campaign for
-                  bumpers and boat-landings.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="heading4">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapse4"
-                >
-                  Barge Bumper & Boat Landing Replacement (BBLRP-IV)
-                </button>
-              </h2>
-              <div
-                id="collapse4"
-                class="accordion-collapse collapse"
-                data-bs-parent="#projectsAccordion"
-              >
-                <div class="accordion-body">
-                  Onshore and offshore fabrication & installation campaign for
-                  bumpers and boat-landings.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="heading4">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapse4"
-                >
-                  Barge Bumper & Boat Landing Replacement (BBLRP-IV)
-                </button>
-              </h2>
-              <div
-                id="collapse4"
-                class="accordion-collapse collapse"
-                data-bs-parent="#projectsAccordion"
-              >
-                <div class="accordion-body">
-                  Onshore and offshore fabrication & installation campaign for
-                  bumpers and boat-landings.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="heading4">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapse4"
-                >
-                  Barge Bumper & Boat Landing Replacement (BBLRP-IV)
-                </button>
-              </h2>
-              <div
-                id="collapse4"
-                class="accordion-collapse collapse"
-                data-bs-parent="#projectsAccordion"
-              >
-                <div class="accordion-body">
-                  Onshore and offshore fabrication & installation campaign for
-                  bumpers and boat-landings.
-                </div>
-              </div>
-            </div>
+          <div class="text-center mt-5">
+            <a href="services.html" class="btn btn-primary px-4 py-2">View All Services</a>
           </div>
         </div>
       </section>
 
       <!-- Testimonials Section -->
-      <section id="testimonials" class="testimonials section">
+      <section id="testimonials" class="testimonials section py-5">
         <div class="container" data-aos="fade-up" data-aos-delay="100">
           <div class="testimonials-slider swiper init-swiper">
             <script type="application/json" class="swiper-config">
               {
                 "loop": true,
                 "speed": 600,
-                "autoplay": {
-                  "delay": 5000
-                },
+                "autoplay": {"delay": 5000},
                 "slidesPerView": 1,
                 "spaceBetween": 30,
-                "pagination": {
-                  "el": ".swiper-pagination",
-                  "type": "bullets",
-                  "clickable": true
-                },
-                "navigation": {
-                  "nextEl": ".swiper-button-next",
-                  "prevEl": ".swiper-button-prev"
-                }
+                "pagination": {"el": ".swiper-pagination","type": "bullets","clickable": true},
+                "navigation": {"nextEl": ".swiper-button-next","prevEl": ".swiper-button-prev"}
               }
             </script>
+
             <div class="swiper-wrapper">
+              <!-- Slide 1 -->
               <div class="swiper-slide">
-                <div
-                  class="testimonial-slide"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                >
+                <div class="testimonial-slide" data-aos="fade-up" data-aos-delay="200">
                   <div class="testimonial-header">
                     <div class="stars-rating">
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                     </div>
-                    <div class="quote-icon">
-                      <i class="bi bi-quote"></i>
-                    </div>
+                    <div class="quote-icon"><i class="bi bi-quote"></i></div>
                   </div>
                   <div class="testimonial-body">
                     <p>
@@ -628,38 +434,24 @@
                   </div>
                   <div class="testimonial-footer">
                     <div class="author-info">
-                      <img
-                        src="assets/img/construction/team-4.webp"
-                        alt="Author"
-                        class="author-avatar"
-                      />
+                      <img src="assets/img/construction/team-4.webp" alt="Author" class="author-avatar" />
                       <div class="author-details">
-                        <h4>Sophia Martinez</h4>
-                        <span class="role">Operations Director</span>
-                        <span class="company">TechVision Corp</span>
+                        <h4 class="mb-0">Sophia Martinez</h4>
+                        <small class="d-block text-muted">Operations Director — TechVision Corp</small>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
+              <!-- Slide 2 -->
               <div class="swiper-slide">
-                <div
-                  class="testimonial-slide"
-                  data-aos="fade-up"
-                  data-aos-delay="300"
-                >
+                <div class="testimonial-slide" data-aos="fade-up" data-aos-delay="300">
                   <div class="testimonial-header">
                     <div class="stars-rating">
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                     </div>
-                    <div class="quote-icon">
-                      <i class="bi bi-quote"></i>
-                    </div>
+                    <div class="quote-icon"><i class="bi bi-quote"></i></div>
                   </div>
                   <div class="testimonial-body">
                     <p>
@@ -671,38 +463,24 @@
                   </div>
                   <div class="testimonial-footer">
                     <div class="author-info">
-                      <img
-                        src="assets/img/construction/team-6.webp"
-                        alt="Author"
-                        class="author-avatar"
-                      />
+                      <img src="assets/img/construction/team-6.webp" alt="Author" class="author-avatar" />
                       <div class="author-details">
-                        <h4>Michael Anderson</h4>
-                        <span class="role">Project Manager</span>
-                        <span class="company">InnovateTech Ltd</span>
+                        <h4 class="mb-0">Michael Anderson</h4>
+                        <small class="d-block text-muted">Project Manager — InnovateTech Ltd</small>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
+              <!-- Slide 3 -->
               <div class="swiper-slide">
-                <div
-                  class="testimonial-slide"
-                  data-aos="fade-up"
-                  data-aos-delay="400"
-                >
+                <div class="testimonial-slide" data-aos="fade-up" data-aos-delay="400">
                   <div class="testimonial-header">
                     <div class="stars-rating">
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                     </div>
-                    <div class="quote-icon">
-                      <i class="bi bi-quote"></i>
-                    </div>
+                    <div class="quote-icon"><i class="bi bi-quote"></i></div>
                   </div>
                   <div class="testimonial-body">
                     <p>
@@ -714,15 +492,10 @@
                   </div>
                   <div class="testimonial-footer">
                     <div class="author-info">
-                      <img
-                        src="assets/img/construction/team-8.webp"
-                        alt="Author"
-                        class="author-avatar"
-                      />
+                      <img src="assets/img/construction/team-8.webp" alt="Author" class="author-avatar" />
                       <div class="author-details">
-                        <h4>Jennifer Wilson</h4>
-                        <span class="role">Digital Strategy Lead</span>
-                        <span class="company">FutureScope Inc</span>
+                        <h4 class="mb-0">Jennifer Wilson</h4>
+                        <small class="d-block text-muted">Digital Strategy Lead — FutureScope Inc</small>
                       </div>
                     </div>
                   </div>
@@ -730,7 +503,7 @@
               </div>
             </div>
 
-            <div class="swiper-navigation-wrapper">
+            <div class="swiper-navigation-wrapper d-flex justify-content-center align-items-center gap-3 mt-4">
               <div class="swiper-button-prev"></div>
               <div class="swiper-pagination"></div>
               <div class="swiper-button-next"></div>
@@ -739,445 +512,91 @@
         </div>
       </section>
 
-      <!-- Certifications Section -->
-      <section id="certifications" class="certifications section">
-        <!-- Section Title -->
-        <div class="container section-title">
-          <h2>Certified &amp; Trusted</h2>
-        </div>
-        <!-- End Section Title -->
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="row align-items-center mb-5 content">
-            <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
-              <h2>Industry Certifications &amp; Excellence</h2>
-              <p>
-                We are committed to delivering excellence by adhering to the
-                highest global standards of quality, safety, and sustainability.
-                Our certifications validate our dedication to consistent
-                performance and client satisfaction.
-              </p>
-            </div>
-            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
-              <div class="badge-highlight">
-                <img
-                  src="assets/img/certificates/c2.jpg"
-                  alt="Quality Excellence Badge"
-                  class="img-fluid"
-                />
-                <div class="badge-content">
-                  <h4>QAAICB Certified</h4>
-                  <p>
-                    Certified and inspected for various ISO standards.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="certification-grid"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
-            <div class="cert-card" data-aos="flip-left" data-aos-delay="100">
-              <div class="cert-icon">
-                <img
-                  src="assets/img/construction/badge-1.webp"
-                  alt="ISO 9001"
-                  class="img-fluid"
-                />
-              </div>
-              <div class="cert-details">
-                <h5>ISO 9001:2015</h5>
-                <span class="cert-category">Quality Management</span>
-                <p>
-                  Certified for implementing strong quality management systems
-                  ensuring consistent project outcomes and continuous
-                  improvement.
-                </p>
-              </div>
-            </div>
-
-            <div class="cert-card" data-aos="flip-left" data-aos-delay="500">
-              <div class="cert-icon">
-                <img
-                  src="assets/img/construction/badge-6.webp"
-                  alt="Insurance"
-                  class="img-fluid"
-                />
-              </div>
-              <div class="cert-details">
-                <h5>Fully Insured</h5>
-                <span class="cert-category">Risk Management</span>
-                <p>
-                  Comprehensive insurance coverage ensures risk mitigation,
-                  financial security, and peace of mind for all stakeholders.
-                </p>
-              </div>
-            </div>
-
-            <div class="cert-card" data-aos="flip-left" data-aos-delay="600">
-              <div class="cert-icon">
-                <img
-                  src="assets/img/construction/badge-7.webp"
-                  alt="Training"
-                  class="img-fluid"
-                />
-              </div>
-              <div class="cert-details">
-                <h5>Skills Certified</h5>
-                <span class="cert-category">Professional Training</span>
-                <p>
-                  Our teams undergo regular upskilling and certification
-                  programs to stay aligned with the latest technologies and
-                  industry practices.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="achievements-banner"
-            data-aos="zoom-in"
-            data-aos-delay="700"
-          >
-            <div class="row text-center">
-              <div class="col-lg-3 col-sm-6">
-                <div class="achievement-item">
-                  <i class="bi bi-award"></i>
-                  <h3>15+</h3>
-                  <p>Industry Awards</p>
-                </div>
-              </div>
-              <div class="col-lg-3 col-sm-6">
-                <div class="achievement-item">
-                  <i class="bi bi-shield-check"></i>
-                  <h3>Zero</h3>
-                  <p>Safety Incidents</p>
-                </div>
-              </div>
-              <div class="col-lg-3 col-sm-6">
-                <div class="achievement-item">
-                  <i class="bi bi-clock-history"></i>
-                  <h3>3+</h3>
-                  <p>Years Experience</p>
-                </div>
-              </div>
-              <div class="col-lg-3 col-sm-6">
-                <div class="achievement-item">
-                  <i class="bi bi-people"></i>
-                  <h3>10+</h3>
-                  <p>Satisfied Clients</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      
-      <!-- Call To Action Section -->
-      <section
-        id="call-to-action"
-        class="call-to-action section light-background"
-      >
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="row g-5 align-items-center">
-            <div class="col-lg-6">
-              <div
-                class="cta-hero-content"
-                data-aos="fade-right"
-                data-aos-delay="200"
-              >
-                <div class="badge-wrapper">
-                  <span class="cta-badge">
-                    <i class="bi bi-shield-check"></i>
-                    Licensed &amp; Bonded Since 2025
-                  </span>
-                </div>
-
-                <h2>Transform Your Space with Expert Construction Services</h2>
-                <p>
-                  We specialize in delivering end-to-end construction solutions,
-                  from design and planning to flawless execution. Our team
-                  ensures safety, quality, and innovation at every stage,
-                  helping you build spaces that are not only functional but also
-                  future-ready. With proven expertise across residential,
-                  commercial, and industrial projects, we bring your vision to
-                  life with precision and care.
-                </p>
-
-                <div class="feature-highlights">
-                  <div class="highlight-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span
-                      >Free project consultation and detailed estimates</span
-                    >
-                  </div>
-                  <div class="highlight-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span
-                      >Comprehensive insurance coverage for all projects</span
-                    >
-                  </div>
-                  <div class="highlight-item">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <span>24/7 emergency response and support services</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-6">
-              <div
-                class="cta-form-section"
-                data-aos="fade-left"
-                data-aos-delay="300"
-              >
-                <div class="form-container">
-                  <!-- Form Header -->
-                  <div class="form-header">
-                    <h3>Send Us a Message</h3>
-                    <p>
-                      "We're here to help. Reach out and let's start building
-                      solutions together."
-                    </p>
-                  </div>
-
-                  <form
-                    action="forms/contact.php"
-                    method="post"
-                    class="php-email-form"
-                  >
-                    <div class="row g-3">
-                      <!-- Name -->
-                      <div class="col-md-6">
-                        <div class="form-group form-floating">
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="nameInput"
-                            name="name"
-                            placeholder="Full Name"
-                            required=""
-                          />
-                          <!-- <label for="nameInput">Full Name</label> -->
-                        </div>
-                      </div>
-
-                      <!-- Email -->
-                      <div class="col-md-6">
-                        <div class="form-group form-floating">
-                          <input
-                            type="email"
-                            class="form-control"
-                            id="emailInput"
-                            name="email"
-                            placeholder="Email Address"
-                            required=""
-                          />
-                          <!-- <label for="emailInput">Email Address</label> -->
-                        </div>
-                      </div>
-
-                      <!-- Subject -->
-                      <div class="col-12">
-                        <div class="form-group form-floating">
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="subjectInput"
-                            name="subject"
-                            placeholder="Subject"
-                            required=""
-                          />
-                          <!-- <label for="subjectInput">Subject</label> -->
-                        </div>
-                      </div>
-
-                      <!-- Message -->
-                      <div class="col-12">
-                        <div class="form-group form-floating">
-                          <textarea
-                            class="form-control"
-                            id="messageInput"
-                            name="message"
-                            rows="5"
-                            placeholder="Your Message"
-                            style="height: 150px"
-                            required=""
-                          ></textarea>
-                          <!-- <label for="messageInput">Your Message</label> -->
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Actions -->
-                    <div
-                      class="form-actions d-flex flex-column flex-md-row align-items-md-center justify-content-between"
-                    >
-                      <button type="submit" class="btn btn-primary">
-                        <i class="bi bi-send-fill me-2"></i>
-                        Send Message
-                      </button>
-                    </div>
-                    <div class="contact-alternative text-center">
-                      <span>Or call us directly:</span><br />
-                      <a href="tel:+15558921567" class="phone-link">
-                        <i class="bi bi-telephone-fill"></i>
-                        +91- 8928309135
-                      </a>
-                    </div>
-                  </form>
-                </div>
-
-                <div
-                  class="trust-indicators"
-                  data-aos="fade-up"
-                  data-aos-delay="400"
-                >
-                  <div class="row g-3">
-                    <div class="col-4">
-                      <div class="trust-item">
-                        <div class="trust-icon">
-                          <i class="bi bi-clock"></i>
-                        </div>
-                        <div class="trust-content">
-                          <span class="trust-number">24h</span>
-                          <span class="trust-label">Response Time</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="trust-item">
-                        <div class="trust-icon">
-                          <i class="bi bi-star-fill"></i>
-                        </div>
-                        <div class="trust-content">
-                          <span class="trust-number">4.9</span>
-                          <span class="trust-label">Customer Rating</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="trust-item">
-                        <div class="trust-icon">
-                          <i class="bi bi-hammer"></i>
-                        </div>
-                        <div class="trust-content">
-                          <span class="trust-number">10+</span>
-                          <span class="trust-label">Projects Done</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!--Client-->
-      <section id="clients" class="client-slider head">
+      <!--Clients Section -->
+      <section id="clients" class="client-slider py-5">
         <div class="container">
           <h2 class="text-center mb-5">Our Esteemed Clients</h2>
-      
+
           <!-- Swiper -->
           <div class="swiper myClientSwiper">
-            <div class="swiper-wrapper">
-      
+            <div class="swiper-wrapper align-items-center">
               <!-- Each logo -->
               <div class="swiper-slide">
                 <div class="client-logo">
-                  <img src="assets/img/client/afcons.jpeg" alt="ONGC Logo">
+                  <img src="assets/img/client/afcons.jpeg" alt="AFCONS Logo" />
                 </div>
               </div>
               <div class="swiper-slide">
                 <div class="client-logo">
-                  <img src="assets/img/client/ajr.jpeg" alt="ONGC Logo">
+                  <img src="assets/img/client/ajr.jpeg" alt="AJR Logo" />
                 </div>
               </div>
               <div class="swiper-slide">
                 <div class="client-logo">
-                  <img src="assets/img/client/core.png" alt="ONGC Logo">
-                </div>
-              </div> 
-
-              <div class="swiper-slide">
-                <div class="client-logo">
-                  <img src="assets/img/client/das.png" alt="ONGC Logo">
+                  <img src="assets/img/client/core.png" alt="Core Logo" />
                 </div>
               </div>
               <div class="swiper-slide">
                 <div class="client-logo">
-                  <img src="assets/img/client/jubilant.png" alt="ONGC Logo">
+                  <img src="assets/img/client/das.png" alt="DAS Logo" />
                 </div>
               </div>
               <div class="swiper-slide">
                 <div class="client-logo">
-                  <img src="assets/img/client/LT.png" alt="L&T Hydrocarbon Logo">
-                </div>
-              </div>
-      
-              <div class="swiper-slide">
-                <div class="client-logo">
-                  <img src="assets/img/client/McDERMOTT.png" alt="J. Ray Mcdermott Logo">
+                  <img src="assets/img/client/jubilant.png" alt="Jubilant Logo" />
                 </div>
               </div>
               <div class="swiper-slide">
                 <div class="client-logo">
-                  <img src="assets/img/client/OCS.jpeg" alt="ONGC Logo">
+                  <img src="assets/img/client/LT.png" alt="L&T Hydrocarbon Logo" />
                 </div>
               </div>
               <div class="swiper-slide">
                 <div class="client-logo">
-                  <img src="assets/img/client/ongc.png" alt="ONGC Logo">
+                  <img src="assets/img/client/McDERMOTT.png" alt="McDermott Logo" />
                 </div>
               </div>
               <div class="swiper-slide">
                 <div class="client-logo">
-                  <img src="assets/img/client/pcts.jpeg" alt="Sapura Fabrication Logo">
+                  <img src="assets/img/client/OCS.jpeg" alt="OCS Logo" />
                 </div>
               </div>
               <div class="swiper-slide">
                 <div class="client-logo">
-                  <img src="assets/img/client/posh.jpeg" alt="Sapura Fabrication Logo">
+                  <img src="assets/img/client/ongc.png" alt="ONGC Logo" />
                 </div>
               </div>
-
               <div class="swiper-slide">
                 <div class="client-logo">
-                  <img src="assets/img/client/sapura.jpeg" alt="Sapura Fabrication Logo">
+                  <img src="assets/img/client/pcts.jpeg" alt="PCTS Logo" />
                 </div>
               </div>
-
               <div class="swiper-slide">
                 <div class="client-logo">
-                  <img src="assets/img/client/westfield.png" alt="Sapura Fabrication Logo">
+                  <img src="assets/img/client/posh.jpeg" alt="POSH Logo" />
                 </div>
               </div>
-        
-      
+              <div class="swiper-slide">
+                <div class="client-logo">
+                  <img src="assets/img/client/sapura.jpeg" alt="Sapura Logo" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="client-logo">
+                  <img src="assets/img/client/westfield.png" alt="Westfield Logo" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
     </main>
 
     <div id="footer-container"></div>
 
     <!-- Scroll Top -->
-    <a
-      href="#"
-      id="scroll-top"
-      class="scroll-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
-
-    <!-- Preloader -->
-    <div id="preloader"></div>
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -1185,37 +604,34 @@
     <script src="assets/vendor/aos/aos.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-      <!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  var swiper = new Swiper(".myClientSwiper", {
-    slidesPerView: 5,       // desktop pe 5 logos ek sath
-    spaceBetween: 30,       // gap between logos
-    loop: true,             // infinite loop
-    autoplay: {
-      delay: 0,             // no delay
-      disableOnInteraction: false,
-    },
-    speed: 4000,            // smooth continuous scroll
-    breakpoints: {
-      320: { slidesPerView: 2, spaceBetween: 20 },   // mobile
-      640: { slidesPerView: 3, spaceBetween: 20 },   // tablet
-      1024: { slidesPerView: 5, spaceBetween: 30 }   // desktop
-    }
-  });
-</script>
+
+    <!-- Swiper JS (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <script>
+      // Clients continuous scroll config
+      var swiper = new Swiper(".myClientSwiper", {
+        slidesPerView: 5,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: { delay: 0, disableOnInteraction: false },
+        speed: 4000,
+        breakpoints: {
+          320: { slidesPerView: 2, spaceBetween: 20 },
+          640: { slidesPerView: 3, spaceBetween: 20 },
+          1024: { slidesPerView: 5, spaceBetween: 30 }
+        }
+      });
+
+      // Load navbar and footer asynchronously (content unchanged)
       window.onload = function () {
         fetch("navbar.html")
           .then((response) => response.text())
           .then((data) => {
             document.getElementById("navbar-container").innerHTML = data;
-
-            // Initialize mobile nav after loading navbar
             const event = new Event("navbarLoaded");
             document.dispatchEvent(event);
           });
-
         fetch("footer.html")
           .then((response) => response.text())
           .then((data) => {
@@ -1224,31 +640,24 @@
       };
 
       document.addEventListener("navbarLoaded", () => {
-        // Initialize other functions
         if (typeof initSwiper === "function") initSwiper();
         if (typeof aosInit === "function") aosInit();
         if (typeof toggleScrolled === "function") toggleScrolled();
         if (typeof toggleScrollTop === "function") toggleScrollTop();
 
-        // Mobile nav toggle
         const mobileNavToggleBtn = document.querySelector(".mobile-nav-toggle");
         if (mobileNavToggleBtn) {
           mobileNavToggleBtn.addEventListener("click", () => {
-            document
-              .querySelector("body")
-              .classList.toggle("mobile-nav-active");
+            document.querySelector("body").classList.toggle("mobile-nav-active");
             mobileNavToggleBtn.classList.toggle("bi-list");
             mobileNavToggleBtn.classList.toggle("bi-x");
           });
         }
 
-        // ✅ Hide mobile nav on link click
         document.querySelectorAll("#navmenu a").forEach((navmenu) => {
           navmenu.addEventListener("click", () => {
             if (document.querySelector(".mobile-nav-active")) {
-              document
-                .querySelector("body")
-                .classList.remove("mobile-nav-active");
+              document.querySelector("body").classList.remove("mobile-nav-active");
               const toggleBtn = document.querySelector(".mobile-nav-toggle");
               if (toggleBtn) {
                 toggleBtn.classList.remove("bi-x");
@@ -1257,23 +666,19 @@
             }
           });
         });
-        console.log("main.js loaded!");
 
-        // Mobile nav dropdown toggle – run immediately since script loaded at the end
         const toggles = document.querySelectorAll("i.toggle-dropdown");
-
         toggles.forEach((toggle) => {
           toggle.addEventListener("click", function (e) {
             e.preventDefault();
             const parentLi = this.closest("li.dropdown");
-            if (parentLi) {
-              parentLi.classList.toggle("dropdown-active");
-            }
+            if (parentLi) parentLi.classList.toggle("dropdown-active");
           });
         });
       });
     </script>
-    <!-- Main JS File -->
+
+    <!-- Main JS File (kept as-is; doesn't change content) -->
     <script src="assets/js/main.js"></script>
   </body>
 </html>
