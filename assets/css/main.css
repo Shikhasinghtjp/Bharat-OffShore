@@ -458,6 +458,11 @@ h6 {
     display: block;
   }
 }
+.navmenu ul li ul {
+  position: absolute; /* take out of normal flow */
+  top: 100%;
+  left: 0;
+}
 
 /*--------------------------------------------------------------
 # Global Footer
@@ -1299,7 +1304,7 @@ section,
   position: absolute;
   bottom: -60px;
   right: -30px;
-  width: 50%;
+  width: 40%;
   z-index: 2;
   border-radius: 8px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
