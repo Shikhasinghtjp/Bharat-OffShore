@@ -31,7 +31,7 @@
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lato:wght@400;700&family=Ubuntu:wght@400;700&display=swap"
-      rel="preload"
+      rel="preload" as="font"
     />
   
     <!-- Bootstrap & Icons -->
@@ -39,7 +39,7 @@
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
   
     <!-- Swiper CSS -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>  
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style"/>  
 
     <style>
       :root{
@@ -164,7 +164,7 @@
       .author-info { display:flex; gap:12px; align-items:center; margin-top:14px; }
       .author-avatar { width:56px; height:56px; object-fit:cover; border-radius:50%; }
     
-      .client-logo img { max-width: 140px; width:100%; height:auto; display:block; margin:0 auto; }
+      .client-logo img {aspect-ratio: 169/90 ;max-width: 140px; width:100%; height:auto; display:block; margin:0 auto; }
     
       @media (max-width: 991px) {
         .hero-text .display-4 { font-size:2.2rem; }
@@ -459,7 +459,7 @@
                     High-quality topside & subsea fabrications built with
                     precision and safety.
                   </p>
-                  <a href="fabrication.html" class="btn-service">Learn More</a>
+                  <a href="fabrication.html" class="btn-service" alt="Oil and Gas Fabrications">Learn More</a>
                 </div>
               </div>
             </div>
@@ -476,7 +476,7 @@
                     Providing reliable manpower and resources tailored to your
                     needs.
                   </p>
-                  <a href="resources.html" class="btn-service">Learn More</a>
+                  <a href="resources.html" class="btn-service" alt="Equipment / Manpower">Learn More</a>
                 </div>
               </div>
             </div>
@@ -493,7 +493,7 @@
                     Expert consultancy for complex, time-sensitive, and critical
                     projects.
                   </p>
-                  <a href="consultancy.html" class="btn-service">Learn More</a>
+                  <a href="consultancy.html" class="btn-service" alt="Project Management Consultancy">Learn More</a>
                 </div>
               </div>
             </div>
