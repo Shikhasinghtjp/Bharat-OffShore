@@ -744,94 +744,121 @@
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-<!-- Vendor JS Files -->
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/aos/aos.js"></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-
-<script>
-  // Clients continuous scroll config
-  var swiper = new Swiper(".myClientSwiper", {
-    slidesPerView: 5,
-    spaceBetween: 30,
-    loop: true,
-    autoplay: { delay: 0, disableOnInteraction: false },
-    speed: 4000,
-    breakpoints: {
-      320: { slidesPerView: 2, spaceBetween: 20 },
-      640: { slidesPerView: 3, spaceBetween: 20 },
-      1024: { slidesPerView: 5, spaceBetween: 30 }
-    }
-  });
-
-  // Load navbar and footer asynchronously
-  window.onload = function () {
-    fetch("navbar.html")
-      .then((response) => response.text())
-      .then((data) => {
-        document.getElementById("navbar-container").innerHTML = data;
-        const event = new Event("navbarLoaded");
-        document.dispatchEvent(event); // Dispatch event to signal navbar is loaded
-      });
-    fetch("footer.html")
-      .then((response) => response.text())
-      .then((data) => {
-        document.getElementById("footer-container").innerHTML = data;
-      });
-  };
-
-  // Wait for the navbar to load and initialize components
-  document.addEventListener("navbarLoaded", () => {
-    // Initialize components once the navbar is loaded
-    if (typeof initSwiper === "function") initSwiper();  // Ensure swiper is initialized after navbar load
-    if (typeof aosInit === "function") aosInit();  // Initialize AOS animations
-    if (typeof toggleScrolled === "function") toggleScrolled(); // Initialize scroll handling
-    if (typeof toggleScrollTop === "function") toggleScrollTop(); // Initialize scroll-top button
-
-    // Mobile nav toggle behavior
-    const mobileNavToggleBtn = document.querySelector(".mobile-nav-toggle");
-    if (mobileNavToggleBtn) {
-      mobileNavToggleBtn.addEventListener("click", () => {
-        document.querySelector("body").classList.toggle("mobile-nav-active");
-        mobileNavToggleBtn.classList.toggle("bi-list");
-        mobileNavToggleBtn.classList.toggle("bi-x");
-      });
-    }
-
-    // Handle navigation link clicks (for mobile nav)
-    document.querySelectorAll("#navmenu a").forEach((navmenu) => {
-      navmenu.addEventListener("click", () => {
-        if (document.querySelector(".mobile-nav-active")) {
-          document.querySelector("body").classList.remove("mobile-nav-active");
-          const toggleBtn = document.querySelector(".mobile-nav-toggle");
-          if (toggleBtn) {
-            toggleBtn.classList.remove("bi-x");
-            toggleBtn.classList.add("bi-list");
+    <script>
+      window.addEventListener("load", () => {
+        "use strict";
+    
+        const selectBody = document.querySelector("body");
+        const selectHeader = document.querySelector("#header");
+    
+        // Cache these selectors to avoid repeated DOM queries
+        const mobileNavToggleBtn = document.querySelector(".mobile-nav-toggle");
+        const preloader = document.querySelector("#preloader");
+        const scrollTop = document.querySelector(".scroll-top");
+    
+        // Throttle or debounce scroll events to reduce reflows
+        let lastScrollY = 0;
+        function toggleScrolled() {
+          if (
+            !selectHeader.classList.contains("scroll-up-sticky") &&
+            !selectHeader.classList.contains("sticky-top") &&
+            !selectHeader.classList.contains("fixed-top")
+          ) return;
+    
+          const scrollY = window.scrollY;
+          if (Math.abs(scrollY - lastScrollY) > 10) { // Only trigger if scroll has moved a significant amount
+            if (scrollY > 100) {
+              selectBody.classList.add("scrolled");
+            } else {
+              selectBody.classList.remove("scrolled");
+            }
+            lastScrollY = scrollY;
           }
         }
+        window.addEventListener("scroll", toggleScrolled);
+    
+        // Mobile nav toggle
+        if (mobileNavToggleBtn) {
+          function mobileNavToggle() {
+            selectBody.classList.toggle("mobile-nav-active");
+            mobileNavToggleBtn.classList.toggle("bi-list");
+            mobileNavToggleBtn.classList.toggle("bi-x");
+          }
+          mobileNavToggleBtn.addEventListener("click", mobileNavToggle);
+        }
+    
+        // Hide mobile nav on same-page/hash links
+        document.querySelectorAll("#navmenu a").forEach((navmenu) => {
+          navmenu.addEventListener("click", () => {
+            if (selectBody.classList.contains("mobile-nav-active")) {
+              mobileNavToggle();
+            }
+          });
+        });
+    
+        // Preloader
+        if (preloader) {
+          window.addEventListener("load", () => {
+            preloader.remove();
+          });
+        }
+    
+        // Scroll top button
+        if (scrollTop) {
+          function toggleScrollTop() {
+            window.scrollY > 100
+              ? scrollTop.classList.add("active")
+              : scrollTop.classList.remove("active");
+          }
+          scrollTop.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          });
+    
+          window.addEventListener("scroll", toggleScrollTop);
+        }
+    
+        // Animation on scroll function and init (AOS)
+        function aosInit() {
+          if (typeof AOS !== "undefined") {
+            AOS.init({
+              duration: 600,
+              easing: "ease-in-out",
+              once: true,
+              mirror: false,
+            });
+          }
+        }
+        aosInit();
+    
+        // Init swiper sliders
+        function initSwiper() {
+          document.querySelectorAll(".init-swiper").forEach(function (swiperElement) {
+            let config = JSON.parse(
+              swiperElement.querySelector(".swiper-config").innerHTML.trim()
+            );
+    
+            if (swiperElement.classList.contains("swiper-tab")) {
+              initSwiperWithCustomPagination(swiperElement, config);
+            } else {
+              new Swiper(swiperElement, config);
+            }
+          });
+        }
+        initSwiper();
+    
+        // Initiate glightbox
+        if (typeof glightbox !== "undefined") {
+          const glightboxInstance = glightbox({
+            selector: ".glightbox",
+          });
+        }
+    
       });
-    });
-
-    // Handle dropdown toggles
-    const toggles = document.querySelectorAll("i.toggle-dropdown");
-    toggles.forEach((toggle) => {
-      toggle.addEventListener("click", function (e) {
-        e.preventDefault();
-        const parentLi = this.closest("li.dropdown");
-        if (parentLi) parentLi.classList.toggle("dropdown-active");
-      });
-    });
-
-    // Initialize GLightbox after navbar is loaded
-    const glightboxInstance = GLightbox({
-      selector: ".glightbox",
-    });
-  });
-</script>
-
-<!-- Main JS File (deferred to ensure it runs last) -->
-<script src="assets/js/main.js" defer></script>
-
+    </script>
+    
   </body>
 </html>
