@@ -219,8 +219,112 @@
         .badge-custom { font-size:0.68rem; padding:4px 8px; }
       }
      
- 
+   /* container for events row to center cards when less items */
+   .events-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* center cards horizontally when < 3 items */
+    gap: 30px; /* even gap between cards */
+  }
 
+  /* fixed card size */
+  .event-card {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    width: 100%;
+    max-width: 420px;     
+    height: 380px;        
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;      
+  }
+
+  
+  .event-card .img-wrap {
+    height: calc(100% - 90px); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .event-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; 
+    display: block;
+    filter: brightness(1.2);
+  }
+
+ 
+  .event-overlay {
+    height: 90px;
+    padding: 12px 18px;
+    background: rgba(0, 123, 255, 0);
+    color: #fff;
+    transition: background 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  
+  .event-card:hover .event-overlay {
+    background: rgba(0, 123, 255, 0.95);
+  }
+
+  .event-card:hover .event-date {
+    color: white;
+  }
+  .event-card:hover .event-title {
+    color: white;
+  }
+
+  .event-date {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    color: black;
+  }
+
+  .event-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  .event-label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(0,123,255,0.95);
+    color: #fff;
+    padding: 5px 9px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 6px;
+    z-index: 5;
+  }
+
+  /* responsive tweaks */
+  @media (max-width: 991px) {
+    .event-card { max-width: 360px; height: 320px; }
+    .event-card .img-wrap { height: calc(100% - 80px); }
+    .event-overlay { height: 80px; padding: 10px 14px; }
+  }
+
+  @media (max-width: 576px) {
+    .event-card { max-width: 100%; height: 260px; }
+    .event-card .img-wrap { height: calc(100% - 70px); }
+    .event-overlay { height: 70px; padding: 8px 12px; }
+    .events-row { gap: 18px; }
+    .event-title { font-size: 14px; }
+  }
     </style>
     
   </head>
@@ -512,6 +616,45 @@
         </div>
       </section>
 
+      <section class="py-5">
+        <div class="container">
+          <h2 class="text-center mb-5">Events & Training</h2>
+      
+          <!-- use our flex row so 2 cards center evenly -->
+          <div class="events-row">
+      
+            <!-- Card 1 -->
+            <div class="event-card">
+              <span class="event-label">Event</span>
+      
+              <!-- img-wrap ensures image cannot push card height -->
+              <div class="img-wrap">
+                <img src="assets/img/award.jpg" alt="Event 1">
+              </div>
+      
+              <div class="event-overlay">
+                <p class="event-date">21 Sep 2023</p>
+                <h5 class="event-title">Celebrating Excellence: The Maharashtra Ratna Puraskar 2024</h5>
+              </div>
+            </div>
+      
+            <!-- Card 2 -->
+            <div class="event-card">
+              <span class="event-label">Event</span>
+      
+              <div class="img-wrap">
+                <img src="assets/img/award1.jpeg" alt="Event 2">
+              </div>
+      
+              <div class="event-overlay">
+                <p class="event-date">09 Aug 2023</p>
+                <h5 class="event-title">Awarded Shri Mahatma Gandhi Rashtriya Abhiman Puraskar</h5>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </section>
       <!--Clients Section -->
       <section id="clients" class="client-slider py-5">
         <div class="container">
