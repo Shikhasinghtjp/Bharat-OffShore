@@ -148,8 +148,6 @@
     
       .client-logo img { max-width: 140px; width:100%; height:auto; display:block; margin:0 auto; }
     
-      /* ---------- RESPONSIVE BEHAVIOR (improved for <=375px) ---------- */
-    
       @media (max-width: 991px) {
         .hero-text .display-4 { font-size:2.2rem; }
         #heroCarousel { max-height:70vh; height:70vh; }
@@ -162,12 +160,9 @@
         #heroCarousel { max-height:66vh; height:66vh; }
         .hero-text .display-4 { font-size:1.9rem; }
       }
-    
-      /* Key fix: specifically tune for very small screens (<=375px) */
-      @media (max-width: 375px) {
+  
+      @media (max-width: 480px) {
         #heroCarousel { max-height:60vh; height:60vh; }
-    
-        /* Center hero text, limit width so it doesn't overflow */
         .hero-text {
           left:50%;
           top:50%;
@@ -175,7 +170,7 @@
           text-align:center;
           padding: 10px 12px;
           max-width: 92%;
-          width: calc(100% - 28px); /* leave breathing room for padding + badges */
+          width: calc(100% - 28px); 
           -webkit-font-smoothing: antialiased;
         }
     
@@ -188,7 +183,6 @@
         .hero-text .subtitle { font-size:0.95rem; display:block; }
         .hero-text .lead { font-size:0.9rem; }
     
-        /* badges: centered, wrapped and limited */
         .badges {
           bottom: 10px;
           left: 50%;
@@ -202,16 +196,16 @@
           font-size: 0.72rem;
           padding: 5px 9px;
           white-space: nowrap;
-          max-width: 48%; /* prevents a single badge from overflowing — both badges fit side-by-side or wrap */
+          max-width: 55%; 
           overflow: hidden;
           text-overflow: ellipsis;
+          
         }
     
-        /* Slightly reduce CTA size */
+  
         .btn-primary { padding: 8px 14px; font-size:0.95rem; }
       }
     
-      /* Very small phones and very short viewports */
       @media (max-width: 320px), (max-height: 520px) {
         #heroCarousel { max-height:55vh; height:55vh; }
         .hero-text .display-4 { font-size:1.35rem; }
@@ -219,12 +213,11 @@
         .badge-custom { font-size:0.68rem; padding:4px 8px; }
       }
      
-   /* container for events row to center cards when less items */
    .events-row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* center cards horizontally when < 3 items */
-    gap: 30px; /* even gap between cards */
+    justify-content: center; 
+    gap: 30px; 
   }
 
   /* fixed card size */
@@ -343,7 +336,7 @@
             <img src="assets/img/construction/h2.jpg" alt="Image 2" class="d-block w-100" />
           </div>
           <div class="carousel-item">
-            <img src="https://www.quanta-epc.co.uk/wp-content/uploads/2019/01/13.Construction.jpg" alt="Image 3" class="d-block w-100" />
+            <img src="assets/img/construction/c3.jpg" alt="Image 3" class="d-block w-100" />
           </div>
         </div>
 
@@ -385,7 +378,7 @@
               <div class="about-image position-relative" data-aos="fade-left" data-aos-delay="200">
                 <img src="assets/img/construction/about.jpg" alt="Construction Team" class="img-fluid main-image rounded" />
                 <div class="image-overlay mt-3">
-                  <img src="https://images.pexels.com/photos/11139595/pexels-photo-11139595.jpeg" alt="Construction Project" class="img-fluid rounded mt-2" />
+                  <img src="assets/img/construction/about2.jpeg" alt="Construction Project" class="img-fluid rounded mt-2" />
                 </div>
                 
               </div>

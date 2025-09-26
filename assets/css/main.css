@@ -1386,6 +1386,9 @@ section,
   #founder h2:after{
     width:0px;
   }
+  .cta-container {
+    text-align: center;
+  }
 }
 /* Founder Section */
 #founder {
@@ -1801,7 +1804,6 @@ section,
  .cta-container {
   margin-top: 5rem;
   padding: 3rem;
-  background-color: color-mix(in srgb, var(--heading-color), transparent 90%);
   border-radius: 10px;
 }
 
