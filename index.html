@@ -745,8 +745,8 @@
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+    <script src="assets/vendor/aos/aos.js" defer></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
 
@@ -766,20 +766,23 @@
       });
 
       // Load navbar and footer asynchronously (content unchanged)
-      window.onload = function () {
-        fetch("navbar.html")
-          .then((response) => response.text())
-          .then((data) => {
-            document.getElementById("navbar-container").innerHTML = data;
-            const event = new Event("navbarLoaded");
-            document.dispatchEvent(event);
-          });
-        fetch("footer.html")
-          .then((response) => response.text())
-          .then((data) => {
-            document.getElementById("footer-container").innerHTML = data;
-          });
-      };
+      document.addEventListener("DOMContentLoaded", function () {
+  // Fetch navbar and footer asynchronously after DOM is loaded
+  fetch("navbar.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("navbar-container").innerHTML = data;
+      // Dispatch custom event once navbar is loaded
+      const event = new Event("navbarLoaded");
+      document.dispatchEvent(event); // Trigger navbarLoaded event
+    });
+
+  fetch("footer.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("footer-container").innerHTML = data;
+    });
+});
 
       document.addEventListener("navbarLoaded", () => {
         if (typeof initSwiper === "function") initSwiper();
