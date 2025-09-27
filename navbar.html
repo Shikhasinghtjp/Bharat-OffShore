@@ -1,29 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Bharat Off Shore</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+<link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <style>
+    /* Preventing the logo from getting too big initially */
+    .logo img {
+      max-width: 150px;
+      height: auto;
+    }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    /* Ensuring navbar layout remains intact */
+    .navmenu ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+    .navmenu li {
+      display: inline-block;
+      margin-right: 20px;
+    }
 
+    /* Adding some spacing for smaller screens */
+    .navmenu {
+      display: flex;
+      align-items: center;
+    }
 
+    /* Ensuring smooth text rendering */
+    body {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    
+    /* Making the top bar visible without delay */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Adding some spacing for top bar items */
+    .contact-info i,
+    .social-links i {
+      margin-right: 10px;
+    }
+  </style>
 </head>
 
 <body class="index-page">
@@ -55,7 +76,7 @@
           <ul>
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="about.html">About</a></li>
-                  
+
             <li class="dropdown">
               <a href="services.html"><span>Services</span></a>
                 <i class="bi bi-chevron-down toggle-dropdown"></i>
@@ -79,19 +100,4 @@
 
   </header>
   
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
 </body>
-</html>

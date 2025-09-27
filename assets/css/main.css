@@ -463,7 +463,9 @@ h6 {
   top: 100%;
   left: 0;
 }
-
+#navbar-container {
+  min-height: 120px; /* Adjust as per your actual navbar height */
+}
 /*--------------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/
