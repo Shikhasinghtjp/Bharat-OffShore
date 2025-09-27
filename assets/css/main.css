@@ -902,7 +902,7 @@ section,
 .hero .hero-buttons .btn-primary {
   display: inline-block;
   padding: 14px 32px;
-  background-color: var(--accent-color);
+  background-color: #0056b3;
   color: var(--contrast-color);
   border-radius: 4px;
   font-weight: 600;
